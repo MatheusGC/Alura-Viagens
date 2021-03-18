@@ -37,9 +37,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.labelQuantidadeDias.text = "\(viagemAtual.quantidadeDeDias) dias"
         cell.labelPreco.text = viagemAtual.preco
         cell.imagemViagem.image = UIImage(named: viagemAtual.caminhoDaImagem)
+        
+        cell.imagemViagem.layer.cornerRadius = 10
+        cell.imagemViagem.layer.masksToBounds = true
         return cell
     
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
