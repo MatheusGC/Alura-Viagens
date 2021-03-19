@@ -8,17 +8,26 @@
 
 import UIKit
 
-class PacotesViagensViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+class PacotesViagensViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate{
    
+
+    @IBOutlet weak var labelContadorPacotes: UILabel!
+    
+    @IBOutlet weak var pesquisarViagens: UISearchBar!
+    
     
     @IBOutlet weak var colecaoPacotesViagens: UICollectionView!
     
-    let listaViagens:Array<Viagem> = ViagemDAO().retornaTodasAsViagens()
+    let listaComTodasViagens:Array<Viagem> = ViagemDAO().retornaTodasAsViagens()
+    var listaViagens:Array<Viagem> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        listaViagens = listaComTodasViagens
         colecaoPacotesViagens.dataSource = self
         colecaoPacotesViagens.delegate = self
+        pesquisarViagens.delegate = self
+        self.labelContadorPacotes.text = self.atualizaContadorLabel()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -51,6 +60,25 @@ class PacotesViagensViewController: UIViewController, UICollectionViewDataSource
         return CGSize(width: larguraCelula-15, height: 160)
     }
     
- 
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        listaViagens = listaComTodasViagens
+        
+        if searchText != "" {
+            
+            let filtroListaViagem = NSPredicate(format: "titulo contains %@", searchText)
+            let listaFiltrada:Array<Viagem> = (listaViagens as NSArray).filtered(using: filtroListaViagem) as! Array
+            listaViagens = listaFiltrada
+        }
+            self.labelContadorPacotes.text = self.atualizaContadorLabel()
+            colecaoPacotesViagens.reloadData()
+    }
+    
+    func atualizaContadorLabel() -> String {
+        
+        
+        return listaViagens.count == 1 ? "1 pacote encontrado" : "\(listaComTodasViagens.count) pacotes encontrados"
+    }
 
 }
+

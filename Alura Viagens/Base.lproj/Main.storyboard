@@ -13,7 +13,6 @@
         <!--Tab Bar Controller-->
         <scene sceneID="jqL-YO-eRj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iDg-lK-P2w" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController id="tdJ-Xw-Nkl" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nsC-W0-sw5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -25,8 +24,9 @@
                         <segue destination="naM-3j-vzH" kind="relationship" relationship="viewControllers" id="Iuq-xc-Shg"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iDg-lK-P2w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-821" y="134"/>
+            <point key="canvasLocation" x="-840" y="131"/>
         </scene>
         <!--Procurar-->
         <scene sceneID="tne-QT-ifu">
@@ -234,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-84.375" y="132.04225352112675"/>
+            <point key="canvasLocation" x="-64" y="131"/>
         </scene>
         <!--Pacotes-->
         <scene sceneID="Wlq-jJ-0wA">
@@ -256,17 +256,15 @@
                                         <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0vg-YL-hMe">
-                                        <rect key="frame" x="0.0" y="33" width="290" height="30"/>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="8Nw-Xa-xCV">
+                                        <rect key="frame" x="0.0" y="33" width="290" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="rSq-Lp-WJ7"/>
+                                            <constraint firstAttribute="height" constant="35" id="Se9-9d-PBr"/>
                                         </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                    </searchBar>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6 pacotes encontrados" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wx-Yo-dMK">
-                                        <rect key="frame" x="0.0" y="66" width="290" height="30"/>
+                                        <rect key="frame" x="0.0" y="71" width="290" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="yMg-QL-05M"/>
                                         </constraints>
@@ -275,7 +273,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="54u-6b-8IX">
-                                        <rect key="frame" x="0.0" y="99" width="290" height="400"/>
+                                        <rect key="frame" x="0.0" y="104" width="290" height="395"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mnH-Ch-DWU">
                                             <size key="itemSize" width="135" height="160"/>
@@ -355,11 +353,13 @@
                     <tabBarItem key="tabBarItem" title="Pacotes" id="iFF-fg-L33"/>
                     <connections>
                         <outlet property="colecaoPacotesViagens" destination="54u-6b-8IX" id="nGm-93-xXa"/>
+                        <outlet property="labelContadorPacotes" destination="7wx-Yo-dMK" id="LWh-da-Gyp"/>
+                        <outlet property="pesquisarViagens" destination="8Nw-Xa-xCV" id="ecb-Cg-ByL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GuK-fV-aaS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="756" y="133"/>
+            <point key="canvasLocation" x="713" y="132"/>
         </scene>
     </scenes>
 </document>
