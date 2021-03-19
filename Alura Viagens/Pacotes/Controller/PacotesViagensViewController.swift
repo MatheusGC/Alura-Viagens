@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PacotesViagensViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate{
+class PacotesViagensViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UICollectionViewDelegate{
    
 
     @IBOutlet weak var labelContadorPacotes: UILabel!
@@ -60,13 +60,20 @@ class PacotesViagensViewController: UIViewController, UICollectionViewDataSource
         return CGSize(width: larguraCelula-15, height: 160)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let controller = storyboard.instantiateViewController(withIdentifier: "detalhes") as! DetalhesViagensViewController
+      self.present(controller, animated: true, completion: nil)
+     }
+    
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         listaViagens = listaComTodasViagens
         
         if searchText != "" {
             
-            let filtroListaViagem = NSPredicate(format: "titulo contains %@", searchText)
+            let filtroListaViagem = NSPredicate(format: "viagem.titulo contains %@", searchText)
             let listaFiltrada:Array<Viagem> = (listaViagens as NSArray).filtered(using: filtroListaViagem) as! Array
             listaViagens = listaFiltrada
         }
@@ -79,6 +86,7 @@ class PacotesViagensViewController: UIViewController, UICollectionViewDataSource
         
         return listaViagens.count == 1 ? "1 pacote encontrado" : "\(listaComTodasViagens.count) pacotes encontrados"
     }
+    
 
 }
 
