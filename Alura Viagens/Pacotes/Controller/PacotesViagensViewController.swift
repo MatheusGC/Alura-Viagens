@@ -61,8 +61,10 @@ class PacotesViagensViewController: UIViewController, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+      let pacote = listaViagens[indexPath.item]
       let storyboard = UIStoryboard(name: "Main", bundle: nil)
       let controller = storyboard.instantiateViewController(withIdentifier: "detalhes") as! DetalhesViagensViewController
+      controller.pacoteSelecionado = pacote
       self.present(controller, animated: true, completion: nil)
      }
     
